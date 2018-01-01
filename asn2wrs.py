@@ -2394,7 +2394,9 @@ class EthCnf:
                     continue
                 else:
                     break
-            if comment.search(line): continue
+            if comment.search(line):
+                print("line %d: %s --- is comment" % (lineno, line))
+                continue
             result = directive.search(line)
             if result:  # directive
                 rep_result = report.search(result.group('name'))
@@ -2560,8 +2562,10 @@ class EthCnf:
                     ctx = None
                 else:
                     warnings.warn_explicit("Unknown directive '%s'" % (result.group('name')), UserWarning, fn, lineno)
+                print("line %d: %s -- ctx = %s" % (lineno, line, ctx))
                 continue
             if not ctx:
+                print("line %d: is empty" % (lineno))
                 if not empty.match(line):
                     warnings.warn_explicit("Non-empty line in empty context", UserWarning, fn, lineno)
             elif ctx == 'OPT':
