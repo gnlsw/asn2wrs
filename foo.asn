@@ -1,0 +1,23 @@
+-- FOO PROTOCOL
+-- 
+
+FOO-PROTOCOL DEFINITIONS AUTOMATIC TAGS ::=
+BEGIN
+
+-- General definitions
+
+MessageId ::= INTEGER (0..65535)
+FlowId    ::= INTEGER (0..65535)
+
+MessageData ::= SEQUENCE {
+    name    OCTET STRING(SIZE(10)),
+    value   OCTET STRING(SIZE(10))
+}
+
+FOO-MESSAGE ::= SEQUENCE {
+    messageId      MessageId,
+    flowId         FlowId,
+    messageData    MessageData
+}
+
+END
