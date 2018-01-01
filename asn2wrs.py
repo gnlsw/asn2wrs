@@ -7898,6 +7898,9 @@ def eth_main():
     if len(args) < 1:
         eth_usage(); sys.exit(2)
 
+    print(opts)
+    print(args)
+
     conform = EthCnf()
     conf_to_read = None
     output = EthOut()
